@@ -1,0 +1,92 @@
+*{margin: 0;
+padding:0;
+box-sizing: border-box;}
+
+
+
+.personajes{
+    width: 100%;
+    height: auto;
+    background-color: darkviolet;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(1,600px);
+    padding: 40px;
+    border: 4px solid #000;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    filter:grayscale(70%);
+    transition: all 1.2s;
+
+}
+.especie:hover{
+transform:scale(1.09)
+}
+
+#contador {
+    border: 3px solid #000;
+    border-radius: 60px;
+    background-size: contain;
+    background-position: center;
+    filter: saturate(2);
+    transition: all 1.2s;
+    grid-area: inherit;
+    background-image: url("imagenes/contador.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: matrix3d(5);
+}
+
+#pasante {
+    border: 3px solid #000;
+    border-radius: 60px;
+    background-size: contain;
+    background-position: center;
+    filter: saturate(2);
+    transition: all 1.2s;
+    grid-area: inherit;
+    background-image: url("imagenes/pasante.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#abogado{
+    border: 3px solid #000;
+    border-radius: 60px;
+    background-size: contain;
+    background-position: center;
+    filter: saturate(2);
+    transition: all 1.2s;
+    grid-area: inherit;
+    background-image: url("imagenes/vendedor.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#manager
+{
+    border: 3px solid #000;
+    border-radius: 60px;
+    background-size: contain;
+    background-position: center;
+    filter: saturate(2);
+    transition: all 1.2s;
+    grid-area: inherit;
+    background-image: url("imagenes/manager1.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cuadro{
+    position: absolute;
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
