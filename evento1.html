@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultado</title>
 </head>
 <body>
-    
+    <h1>YA TENES UN PERSONAJE Y UN ELEMENTO</h1>
+    <h2>PROXIMAMENTE INICIARAN LOS PROBLEMAS</h2>
+
+    <script>
+        // Recuperar el personaje elegido y el elemento seleccionado desde localStorage
+        let personajeElegido = JSON.parse(localStorage.getItem('personajeElegido'));
+        let elementoElegido = JSON.parse(localStorage.getItem('elementoElegido'));
+
+        // Aquí puedes mostrar la imagen del personaje elegido y el alert con la información requerida
+        alert(`Has elegido el elemento: ${elementoElegido.nombre}\n
+            Características del personaje:\n
+            Carisma: ${personajeElegido.caracteristicas[0]}\n
+            Ética: ${personajeElegido.caracteristicas[1]}\n
+            Motivación: ${personajeElegido.caracteristicas[2]}\n
+            Excel: ${personajeElegido.caracteristicas[3]}`);
+
+        // Limpia localStorage después de usar los datos
+        localStorage.removeItem('personajeElegido');
+        localStorage.removeItem('elementoElegido');
+    </script>
 </body>
 </html>

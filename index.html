@@ -5,14 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="estilo.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap">
 </head>
-<body> 
+<body>
+    <div class="titulo">
+        <h1>Elegí tu especie</h1>
+    </div>
     <div class="personajes">
-        <div class= "especie" id="manager"></div>
-        <div class= "especie" id="contador"></div>
-        <div class= "especie" id="abogado"></div>
-        <div class= "especie" id="pasante"></div>
+        <div class="especie" id="manager">
+            <a href="#" onclick="elegirPersonaje('manager'); return false;">
+                <img src="imagenes/manager.jpeg" alt="Gerente">
+                <span>Gerente</span>
+            </a>
+        </div>
+        <div class="especie" id="contador">
+            <a href="#" onclick="elegirPersonaje('contador'); return false;">
+                <img src="imagenes/contador.jpeg" alt="Contador">
+                <span>Contador</span>
+            </a>
+        </div>
+        <div class="especie" id="abogado">
+            <a href="#" onclick="elegirPersonaje('abogado'); return false;">
+                <img src="imagenes/abogado.jpeg" alt="Abogado">
+                <span>Abogado</span>
+            </a>
+        </div>
+        <div class="especie" id="pasante">
+            <a href="#" onclick="elegirPersonaje('pasante'); return false;">
+                <img src="imagenes/pasante.jpeg" alt="Pasante">
+                <span>Pasante</span>
+            </a>
+        </div>
     </div>
     <div id="cuadro"></div>
     <script src="main.js"></script>
