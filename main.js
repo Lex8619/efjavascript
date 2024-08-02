@@ -38,3 +38,33 @@ function elegirPersonaje(personaje) {
 
     window.location.href = 'elementos.html';
 }
+const cargarDatos = async () => {
+    try {
+        const respuesta = await fetch('categorias.json');
+        const datos = await respuesta.json();
+        elegirCategoria(datos.categorias);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+const elegirCategoria = (data) => {
+    const categ = document.querySelector("#categorias");
+
+    if (!categ) {
+        return;
+    }
+
+    data.forEach(categoria => {
+        const cardCategoria = document.createElement("article");
+        cardCategoria.setAttribute("id", "tarjeta-categoria");
+
+        cardCategoria.innerHTML = `
+            <img class="cat-imagen" src="${categoria.imagen}" alt="${categoria.estilo}" style="width:150px">
+            <div class="cat-description">
+                <h5 class="hnombre">${categoria.estilo}</h5>
+                <a href="compras.html?categoria=${categoria.id}" class="btn-categorias">Quiero trabajar de "${categoria.estilo}"</a>
+            </div>
+        `;
+        categ.appendChild(cardCategoria);
+    });
+};

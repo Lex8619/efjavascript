@@ -13,25 +13,25 @@ function agregarElemento(nombreElemento) {
         case 'Abrochadora':
             elementoElegido = {
                 nombre: 'Abrochadora',
-                modificador: [1, 0, 0, 0]
+                modificador: [0, 0, 1, 1]
             };
             break;
         case 'Cafe':
             elementoElegido = {
                 nombre: 'Café',
-                modificador: [0, 1, 0, 0]
+                modificador: [1, -1, 1, 0]
             };
             break;
         case 'Tarjeta':
             elementoElegido = {
                 nombre: 'Tarjeta',
-                modificador: [0, 0, 1, 0]
+                modificador: [0, 0, 2, 0]
             };
             break;
         case 'Impresora':
             elementoElegido = {
                 nombre: 'Impresora',
-                modificador: [0, 0, 0, 1]
+                modificador: [0, 0, -1, 2]
             };
             break;
         default:
@@ -61,7 +61,6 @@ function confirmarValija() {
     window.location.href = 'evento1.html';
 }
 
-
 function limpiarValija() {
     elementoElegido = null;
     actualizarValija();
@@ -73,23 +72,34 @@ function actualizarValija() {
 
     if (elementoElegido) {
         const li = document.createElement('li');
-        li.textContent = `Elemento: ${elementoElegido.nombre}`;
+        li.textContent = `${elementoElegido.nombre}`;
         valijaElement.appendChild(li);
     }
 }
 function verPersonaje() {
-    let personajeElegido = JSON.parse(localStorage.getItem('personajeElegido'));
+    // Recuperar los datos del personaje desde localStorage
+    let personajeElegido = localStorage.getItem('personajeElegido');
 
-    if (!personajeElegido) {
-        alert('No hay personaje elegido.');
-        return;
+    // Verificar si hay datos en localStorage
+    if (personajeElegido) {
+        // Convertir de JSON a objeto JavaScript
+        personajeElegido = JSON.parse(personajeElegido);
+
+        // Obtener las características del personaje
+        let tipoPersonaje = personajeElegido.tipoPersonaje;
+        let caracteristicas = personajeElegido.caracteristicas;
+
+        // Construir el mensaje con las características
+        let mensaje = `Has elegido ser ${tipoPersonaje}. ¡A trabajar!\n`;
+        mensaje += `Tus características son:\n`;
+        mensaje += `Carisma: ${caracteristicas[0]}\n`;
+        mensaje += `Ética: ${caracteristicas[1]}\n`;
+        mensaje += `Motivación: ${caracteristicas[2]}\n`;
+        mensaje += `Excel: ${caracteristicas[3]}`;
+
+        // Mostrar el mensaje en una alerta
+        alert(mensaje);
+    } else {
+        alert('No se ha seleccionado ningún personaje.');
     }
-
-
-    alert(`Tu personaje actual es: ${personajeElegido.tipoPersonaje}\n
-           Características:\n
-           Carisma: ${personajeElegido.caracteristicas[0]}\n
-           Ética: ${personajeElegido.caracteristicas[1]}\n
-           Motivación: ${personajeElegido.caracteristicas[2]}\n
-           Excel: ${personajeElegido.caracteristicas[3]}`);
 }
