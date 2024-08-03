@@ -10,12 +10,23 @@
 </head>
 <body>
     <div class="titulo">
-        <h1>Selecciona un Ítem</h1>
-    </div>
-    <div id="item-container">
-        <h2>Selecciona un ítem para tu categoría</h2>
-        <div id="items" style="display: flex; flex-wrap: wrap;"></div>
-    </div>
+    <h1>Selecciona un Ítem para tu Categoría</h1>
+    <h2>Cada objeto puede resultar útil más adelante</h2>
+</div>
+<div id="item-container">
+    <h2>Selecciona un ítem para tu categoría</h2>
+    <div id="items" style="display: flex; flex-wrap: wrap;"></div>
+</div>
+<div id="item-seleccionado" style="display: none; text-align: center; margin-top: 20px;">
+    <h2>¿Estas seguro?</h2>
+    <img id="img-seleccionado" src="" alt="Ítem Seleccionado" style="max-width: 200px; height: auto; border-radius: 5px;">
+    <p id="nombre-seleccionado"></p>
+    <p id="caracteristicas-seleccionado"></p>
+</div>
+<div id="confirmar-container" style="display: none; text-align: center; margin-top: 20px;">
+    <button id="confirmar-btn" class="btn-confirmar">Confirmar</button>
+    <button id="cambiar-btn" class="btn-cambiar">Cambiar Ítem</button>
+</div>
     <script src="seleccionar-item.js"></script>
 </body>
 </html>

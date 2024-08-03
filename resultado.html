@@ -6,9 +6,39 @@
     <title>Resultado</title>
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        #resultado-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .resultado-item {
+            margin: 10px;
+        }
+        .resultado-item img {
+            max-width: 150px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
+    <div id="resultado-container">
+        <h1 id="nombre-jugador"></h1>
+        <div class="resultado-item" id="personaje">
+            <h2>Personaje Elegido</h2>
+            <img id="img-personaje" src="" alt="Imagen del personaje">
+            <p id="nombre-personaje"></p>
+        </div>
+        <div class="resultado-item" id="item">
+            <h2>Ítem Seleccionado</h2>
+            <img id="img-item" src="" alt="Imagen del ítem">
+            <p id="nombre-item"></p>
+        </div>
+        <div id="caracteristicas">
+            <h2>Características</h2>
+            <ul id="lista-caracteristicas"></ul>
+        </div>
+        <button onclick="volver()">Volver a Elegir</button>
+    </div>
     <script src="resultado.js"></script>
 </body>
 </html>

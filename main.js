@@ -1,4 +1,4 @@
-// Datos de categorías y características
+
 const categorias = {
     'manager': { nombre: 'Gerente', caracteristicas: [7, 4, 6, 7] },
     'contador': { nombre: 'Contador', caracteristicas: [3, 7, 5, 9] },
@@ -6,24 +6,36 @@ const categorias = {
     'pasante': { nombre: 'Pasante', caracteristicas: [6, 5, 9, 4] }
 };
 
-// Función para mostrar SweetAlert y pedir nombre
-async function pedirNombre() {
-    const { value: nombre } = await Swal.fire({
-        title: 'Ingresa tu nombre',
-        input: 'text',
-        inputLabel: 'Nombre',
-        inputPlaceholder: 'Escribe tu nombre',
-        confirmButtonText: 'Continuar'
-    });
 
-    if (nombre) {
-        Swal.fire(`¡Hola ${nombre}!`, 'Elige una categoría para comenzar.', 'success').then(() => {
-            mostrarCategorias();
+async function pedirNombre() {
+    let nombre = '';
+
+
+    while (!nombre) {
+        const { value } = await Swal.fire({
+            title: 'Bienvenido a Office Lord',
+            text: 'Ingresa tu nombre:',
+            input: 'text',
+            inputPlaceholder: 'Escribe tu nombre',
+            confirmButtonText: 'Continuar',
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Sin nombre no hay sueldo';
+                }
+            }
         });
+
+        if (value) {
+            nombre = value;
+            localStorage.setItem('nombreJugador', nombre);
+            Swal.fire(`¡Hola ${nombre}!`, 'Elige una categoría para comenzar.', 'success').then(() => {
+                mostrarCategorias();
+            });
+        }
     }
 }
 
-// Función para mostrar categorías
+
 function mostrarCategorias() {
     const categoriaContainer = document.getElementById('categoria-container');
     categoriaContainer.style.display = 'block';
@@ -35,7 +47,7 @@ function mostrarCategorias() {
         const div = document.createElement('div');
         div.className = 'categoria';
         div.innerHTML = `
-            <img src="imagenes/${key}.jpeg" alt="${categoria.nombre}">
+            <img src="imagenes/${key}.jpeg" alt="${categoria.nombre}" style="width: 75px">
             <span>${categoria.nombre}</span>
             <button onclick="elegirCategoria('${key}')">Seleccionar</button>
         `;

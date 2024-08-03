@@ -1,0 +1,21 @@
+
+    [
+        {
+            "nombre": "Impresora",
+            "imagen": "imagenes/impresora.jpeg"
+        },
+        {
+            "nombre": "Abrochadora",
+            "imagen": "imagenes/abrochadora.jpeg"
+        },
+        {
+            "nombre": "Aguinaldo",
+            "imagen": "imagenes/aguinaldo.jpeg"
+        },
+        {
+            "nombre": "Acceso al baño ejecutivo",
+            "imagen": "imagenes/tarjeta.jpeg"
+        }
+        
+    ]
+    
