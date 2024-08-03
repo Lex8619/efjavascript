@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
     font-family: 'Cinzel Decorative', cursive;
     margin: 0;
@@ -14,7 +13,6 @@ body {
     border-bottom: 2px solid #ddd;
 }
 
-/* Contenedor principal */
 #contenedor {
     display: flex;
     flex-direction: column;
@@ -22,9 +20,8 @@ body {
     padding: 10px;
 }
 
-/* Estilos para las categorías */
 #categoria-container {
-    text-align: auto;
+    text-align: center;
 }
 
 #categorias {
@@ -34,99 +31,71 @@ body {
     padding: 10px;
     gap: 20px; 
 }
-h2{text-align: center;}
+
+/* Estilo general para encabezados */
+h2 {
+    text-align: center;
+}
+
+/* Estilo para la categoría */
 .categoria {
-    margin: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    flex: 1 0 calc(30% - 20px); /* Ajusta el tamaño de los elementos en la pantalla */
-    max-width: 200px; /* Tamaño máximo de la tarjeta */
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 250px;
+    margin: 10px;
 }
 
-.especie img {
-    width: 100%; /* Ajusta el tamaño de la imagen al contenedor */
+.categoria:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.categoria img {
+    border-radius: 8px;
+    max-width: 100%;
     height: auto;
-    max-width: 150px; /* Tamaño máximo de la imagen */
 }
 
-.especie span {
+.categoria span {
     display: block;
-    margin-top: 10px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
 }
 
-/* Estilos para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .especie {
-        flex: 1 0 calc(50% - 20px); /* Ajusta el tamaño de los elementos en pantallas más pequeñas */
-    }
-}
-
-@media (max-width: 480px) {
-    .especie {
-        flex: 1 0 100%; /* Ajusta el tamaño de los elementos en pantallas muy pequeñas */
-    }
-}
-.footer {
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-top: 2px solid #ddd;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.footer-link {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 16px;
-}
-
-.footer-link:hover {
-    text-decoration: underline;
-}
-.btn-confirmar,
-.btn-cambiar {
-    padding: 10px 20px;
-    margin: 10px;
+.categoria button {
+    background-color: #007bff;
+    color: white;
     border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 10px 15px;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-.btn-confirmar {
-    background-color: #28a745; /* Color verde para confirmar */
-}
-
-.btn-confirmar:hover {
-    background-color: #218838;
-}
-
-.btn-cambiar {
-    background-color: #007bff; /* Color azul para cambiar */
-}
-
-.btn-cambiar:hover {
+.categoria button:hover {
     background-color: #0056b3;
 }
+
 .item {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
     text-align: center;
-    flex: 1 1 calc(25% - 20px); /* Ajusta el tamaño según el espacio disponible */
+    flex: 1 1 calc(25% - 20px); 
     box-sizing: border-box;
 }
 
 .item img {
-    width: 100%; /* Ajusta el tamaño de las imágenes */
-    height: auto; /* Mantiene la proporción de la imagen */
-    max-width: 200px; /* Puedes ajustar el tamaño máximo según sea necesario */
+    width: 100%; 
+    height: auto; 
+    max-width: 200px; 
     border-radius: 5px;
 }
 
@@ -155,19 +124,89 @@ h2{text-align: center;}
     background-color: #0056b3;
 }
 
-.categoria {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    flex: 1 1 calc(25% - 20px); /* Ajusta el tamaño según el espacio disponible */
-    box-sizing: border-box;
+#lista-caracteristicas {
+    list-style-type: none; 
+    padding: 0;            
+    margin: 0;             
 }
 
-.categoria img {
-    width: 100%; /* Ajusta el tamaño de las imágenes */
-    height: auto; /* Mantiene la proporción de la imagen */
-    max-width: 200px; /* Puedes ajustar el tamaño máximo según sea necesario */
+.footer {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #ddd;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el botón de modo oscuro */
+#toggle-dark-mode {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#toggle-dark-mode:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .titulo, 
+.dark-mode .footer, 
+.dark-mode .categoria, 
+.dark-mode .item {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-mode button {
+    background-color: #333;
+    color: #e0e0e0;
+}
+.btn-cambiar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+.btn-confirmar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }

@@ -2,8 +2,8 @@ const categorias = {
     'manager': { 
         nombre: 'Gerente', 
         caracteristicas: {
-            conocimiento: 7, 
-            excel: 4, 
+            conocimiento: 4, 
+            excel: 7, 
             motivacion: 6, 
             carisma: 7 
         } 
@@ -11,10 +11,10 @@ const categorias = {
     'contador': { 
         nombre: 'Contador', 
         caracteristicas: {
-            conocimiento: 3, 
-            excel: 7, 
+            conocimiento: 7, 
+            excel: 9, 
             motivacion: 5, 
-            carisma: 9 
+            carisma: 3 
         } 
     },
     'abogado': { 
@@ -59,7 +59,7 @@ async function pedirNombre() {
         if (value) {
             nombre = value;
             localStorage.setItem('nombreJugador', nombre);
-            Swal.fire(`¡Hola ${nombre}!`, 'Elige una categoría para comenzar.', 'success').then(() => {
+            Swal.fire(`¡Hola ${nombre}!`, '¿De qué te gustaría trabajar?.', 'success').then(() => {
                 mostrarCategorias();
             });
         }
@@ -86,7 +86,6 @@ function mostrarCategorias() {
     }
 }
 
-// Función para elegir una categoría
 function elegirCategoria(categoriaKey) {
     const categoria = categorias[categoriaKey];
     localStorage.setItem('categoria', categoria.nombre);
@@ -94,5 +93,17 @@ function elegirCategoria(categoriaKey) {
     window.location.href = 'seleccionar-item.html';
 }
 
-// Llamar a la función para pedir el nombre cuando se carga la página
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    const isDarkMode = body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const isDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
+});
 document.addEventListener('DOMContentLoaded', pedirNombre);

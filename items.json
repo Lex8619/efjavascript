@@ -15,6 +15,9 @@
         {
             "nombre": "Acceso al baño ejecutivo",
             "imagen": "imagenes/Acceso al baño ejecutivo.jpeg"
+        },
+        {   "nombre": "café",
+            "imagen":"imagenes/café.jpeg"
         }
         
     ]

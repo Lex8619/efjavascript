@@ -52,5 +52,17 @@ function volver() {
     window.location.href = 'index.html';
 }
 
-// Cargar los ítems y mostrar el resultado cuando se carga la página
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    const isDarkMode = body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const isDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
+});
 document.addEventListener('DOMContentLoaded', mostrarResultado);
