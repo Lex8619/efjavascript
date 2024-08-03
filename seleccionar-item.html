@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio del Juego</title>
+    <title>Seleccionar Ítem</title>
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="titulo">
-        <h1>Bienvenido al Juego de Aventuras</h1>
+        <h1>Selecciona un Ítem</h1>
     </div>
-    <div id="contenedor">
-        <div id="categoria-container" style="display: none;">
-            <h2>Elige una categoría</h2>
-            <div id="categorias" style="display: flex; flex-wrap: wrap;"></div>
-            <div id="caracteristicas" style="margin-top: 20px;"></div>
-        </div>
+    <div id="item-container">
+        <h2>Selecciona un ítem para tu categoría</h2>
+        <div id="items" style="display: flex; flex-wrap: wrap;"></div>
     </div>
-    <script src="main.js"></script>
+    <script src="seleccionar-item.js"></script>
 </body>
 </html>

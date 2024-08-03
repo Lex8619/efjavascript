@@ -1,70 +1,55 @@
-let nombre = prompt("Ingresa tu nombre");
-alert("Bienvenido, " + nombre + "! a Office Lord, la batalla por la oficina moderna\nElegi tu especie");
-
-let caracteristicasGerente = [7, 4, 6, 7];
-let caracteristicasAbogado = [9, 4, 7, 4];
-let caracteristicasContador = [3, 7, 5, 9];
-let caracteristicasPasante = [6, 5, 9, 4];
-
-function elegirPersonaje(personaje) {
-    let caracteristicas;
-
-    switch (personaje) {
-        case 'manager':
-            caracteristicas = caracteristicasGerente;
-            break;
-        case 'contador':
-            caracteristicas = caracteristicasContador;
-            break;
-        case 'abogado':
-            caracteristicas = caracteristicasAbogado;
-            break;
-        case 'pasante':
-            caracteristicas = caracteristicasPasante;
-            break;
-        default:
-            alert('Especie no válida.');
-            return;
-    }
-
-    let personajeElegido = {
-        tipoPersonaje: personaje,
-        caracteristicas: caracteristicas
-    };
-
-    localStorage.setItem('personajeElegido', JSON.stringify(personajeElegido));
-
-    alert(`Has elegido ser ${personaje}. ¡A trabajar!\nTus características son:\nCarisma: ${caracteristicas[0]}\nÉtica: ${caracteristicas[1]}\nMotivación: ${caracteristicas[2]}\nExcel: ${caracteristicas[3]}`);
-
-    window.location.href = 'elementos.html';
-}
-const cargarDatos = async () => {
-    try {
-        const respuesta = await fetch('categorias.json');
-        const datos = await respuesta.json();
-        elegirCategoria(datos.categorias);
-    } catch (error) {
-        console.error('Error:', error);
-    }
+// Datos de categorías y características
+const categorias = {
+    'manager': { nombre: 'Gerente', caracteristicas: [7, 4, 6, 7] },
+    'contador': { nombre: 'Contador', caracteristicas: [3, 7, 5, 9] },
+    'abogado': { nombre: 'Abogado', caracteristicas: [5, 6, 7, 8] },
+    'pasante': { nombre: 'Pasante', caracteristicas: [6, 5, 9, 4] }
 };
-const elegirCategoria = (data) => {
-    const categ = document.querySelector("#categorias");
 
-    if (!categ) {
-        return;
-    }
-
-    data.forEach(categoria => {
-        const cardCategoria = document.createElement("article");
-        cardCategoria.setAttribute("id", "tarjeta-categoria");
-
-        cardCategoria.innerHTML = `
-            <img class="cat-imagen" src="${categoria.imagen}" alt="${categoria.estilo}" style="width:150px">
-            <div class="cat-description">
-                <h5 class="hnombre">${categoria.estilo}</h5>
-                <a href="compras.html?categoria=${categoria.id}" class="btn-categorias">Quiero trabajar de "${categoria.estilo}"</a>
-            </div>
-        `;
-        categ.appendChild(cardCategoria);
+// Función para mostrar SweetAlert y pedir nombre
+async function pedirNombre() {
+    const { value: nombre } = await Swal.fire({
+        title: 'Ingresa tu nombre',
+        input: 'text',
+        inputLabel: 'Nombre',
+        inputPlaceholder: 'Escribe tu nombre',
+        confirmButtonText: 'Continuar'
     });
-};
+
+    if (nombre) {
+        Swal.fire(`¡Hola ${nombre}!`, 'Elige una categoría para comenzar.', 'success').then(() => {
+            mostrarCategorias();
+        });
+    }
+}
+
+// Función para mostrar categorías
+function mostrarCategorias() {
+    const categoriaContainer = document.getElementById('categoria-container');
+    categoriaContainer.style.display = 'block';
+
+    const categoriasDiv = document.getElementById('categorias');
+    categoriasDiv.innerHTML = '';
+
+    for (const [key, categoria] of Object.entries(categorias)) {
+        const div = document.createElement('div');
+        div.className = 'categoria';
+        div.innerHTML = `
+            <img src="imagenes/${key}.jpeg" alt="${categoria.nombre}">
+            <span>${categoria.nombre}</span>
+            <button onclick="elegirCategoria('${key}')">Seleccionar</button>
+        `;
+        categoriasDiv.appendChild(div);
+    }
+}
+
+// Función para elegir una categoría
+function elegirCategoria(categoriaKey) {
+    const categoria = categorias[categoriaKey];
+    localStorage.setItem('categoria', categoria.nombre);
+    localStorage.setItem('caracteristicas', JSON.stringify(categoria.caracteristicas));
+    window.location.href = 'seleccionar-item.html';
+}
+
+// Llamar a la función para pedir el nombre cuando se carga la página
+document.addEventListener('DOMContentLoaded', pedirNombre);
