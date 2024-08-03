@@ -2,19 +2,19 @@
     [
         {
             "nombre": "Impresora",
-            "imagen": "imagenes/impresora.jpeg"
+            "imagen": "imagenes/Impresora.jpeg"
         },
         {
             "nombre": "Abrochadora",
-            "imagen": "imagenes/abrochadora.jpeg"
+            "imagen": "imagenes/Abrochadora.jpeg"
         },
         {
             "nombre": "Aguinaldo",
-            "imagen": "imagenes/aguinaldo.jpeg"
+            "imagen": "imagenes/Aguinaldo.jpeg"
         },
         {
             "nombre": "Acceso al baño ejecutivo",
-            "imagen": "imagenes/tarjeta.jpeg"
+            "imagen": "imagenes/Acceso al baño ejecutivo.jpeg"
         }
         
     ]

@@ -6,12 +6,12 @@ const imagenesPersonaje = {
 };
 
 function obtenerUrlImagenItem(nombreItem) {
-    return `imagenes/${nombreItem}.jpeg`; // Asume que el nombre del archivo es igual al nombre del ítem
+    return `imagenes/${nombreItem}.jpeg`; 
 }
 
 function mostrarResultado() {
     const categoria = localStorage.getItem('categoria');
-    const item = localStorage.getItem('item');
+    const item = JSON.parse(localStorage.getItem('itemElegido'));
     const caracteristicas = JSON.parse(localStorage.getItem('caracteristicas'));
     const nombreJugador = localStorage.getItem('nombreJugador');
 
@@ -29,14 +29,14 @@ function mostrarResultado() {
 
     // Mostrar datos del ítem
     if (item) {
-        document.getElementById('nombre-item').textContent = item;
-        document.getElementById('img-item').src = obtenerUrlImagenItem(item) || 'imagenes/default-item.jpeg';
+        document.getElementById('nombre-item').textContent = item.nombre;
+        document.getElementById('img-item').src = obtenerUrlImagenItem(item.nombre) || 'imagenes/default-item.jpeg';
 
-        // Mostrar características del ítem
+        // Mostrar características de la categoría
         const listaCaracteristicas = document.getElementById('lista-caracteristicas');
-        if (caracteristicas && caracteristicas.length) {
-            listaCaracteristicas.innerHTML = caracteristicas.map((caracteristica, index) =>
-                `<li>Característica ${index + 1}: ${caracteristica}</li>`
+        if (caracteristicas) {
+            listaCaracteristicas.innerHTML = Object.entries(caracteristicas).map(([key, value], index) =>
+                `<li>${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}</li>`
             ).join('');
         } else {
             listaCaracteristicas.innerHTML = '<li>No hay características disponibles</li>';

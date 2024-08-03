@@ -45,6 +45,7 @@ function seleccionarItem(nombre, imagen) {
 document.getElementById('confirmar-btn').addEventListener('click', function() {
     if (itemElegido) {
         localStorage.setItem('itemElegido', JSON.stringify(itemElegido));
+        // No almacenes las características del ítem aquí
         window.location.href = 'resultado.html';
     } else {
         Swal.fire('Error', 'Selecciona un ítem antes de confirmar.', 'error');

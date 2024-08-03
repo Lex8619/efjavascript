@@ -1,9 +1,40 @@
-
 const categorias = {
-    'manager': { nombre: 'Gerente', caracteristicas: [7, 4, 6, 7] },
-    'contador': { nombre: 'Contador', caracteristicas: [3, 7, 5, 9] },
-    'abogado': { nombre: 'Abogado', caracteristicas: [5, 6, 7, 8] },
-    'pasante': { nombre: 'Pasante', caracteristicas: [6, 5, 9, 4] }
+    'manager': { 
+        nombre: 'Gerente', 
+        caracteristicas: {
+            conocimiento: 7, 
+            excel: 4, 
+            motivacion: 6, 
+            carisma: 7 
+        } 
+    },
+    'contador': { 
+        nombre: 'Contador', 
+        caracteristicas: {
+            conocimiento: 3, 
+            excel: 7, 
+            motivacion: 5, 
+            carisma: 9 
+        } 
+    },
+    'abogado': { 
+        nombre: 'Abogado', 
+        caracteristicas: {
+            conocimiento: 5, 
+            excel: 6, 
+            motivacion: 7, 
+            carisma: 8 
+        } 
+    },
+    'pasante': { 
+        nombre: 'Pasante', 
+        caracteristicas: {
+            conocimiento: 6, 
+            excel: 5, 
+            motivacion: 9, 
+            carisma: 4 
+        } 
+    }
 };
 
 
